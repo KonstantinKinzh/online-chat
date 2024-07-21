@@ -1,17 +1,22 @@
-interface IInput {
+interface IInputFrom {
     type: string;
     placeholder: string;
-}
+    onChange: React.ChangeEventHandler<HTMLInputElement>
+    value:string;
+};
+
 import "./InputForm.css";
 
-export function InputForm(props: IInput) {
-    const { type, placeholder } = props;
+export function InputForm(props: IInputFrom) {
+    const { type, placeholder, onChange, value } = props;
 
     return (
         <input
             type={type}
             className="input-auth"
             placeholder={placeholder}
+            onChange={onChange}
+            value={value}
         />
     );
 };
