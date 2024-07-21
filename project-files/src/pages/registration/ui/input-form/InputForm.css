@@ -1,0 +1,26 @@
+.input-auth {
+    background: transparent;
+    border: 0 solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.2px solid rgba(255, 255, 255, 0.7);
+    color: white;
+    display: block;
+    margin: 1rem;
+    padding: .5rem;
+    transition: 250ms background ease-in;
+    width: calc(100% - 3rem);
+    outline: none;
+
+    &:focus {
+        background: white;
+        color: black;
+        transition: 250ms background ease-in;
+    }
+}
+
+.input-auth::placeholder {
+    font-weight: 500;
+    font-size: 1.1vw;
+}
