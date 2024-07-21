@@ -1,11 +1,12 @@
-import { Registration } from '@/pages/registration';
+import { Fragment } from "react/jsx-runtime";
+import { Router } from "@/router";
 import './App.css';
 
 export function App() {
 
   return (
-    <>
-      <Registration/>
-    </>
+    <Fragment>
+      <Router />
+    </Fragment>
   );
 };
