@@ -2,7 +2,8 @@ import { useGetDataForm } from "./hooks/useGetDataForm";
 import { useRegistrationUser } from "./hooks/useRegistrationUser";
 import { LogoForm } from "./ui/logo-form";
 import { InputForm } from "./ui/input-form";
-import { useNavigate } from "react-router-dom";
+import { Background } from "./ui/background";
+import { useNavigate, Link } from "react-router-dom";
 import "./Registration.css";
 
 
@@ -16,34 +17,33 @@ export function Registration() {
             <form
                 className="registration-form"
                 onSubmit={() => { handleRegister(), navigate("/chat") }}>
-                    
                 <LogoForm />
-
                 <InputForm
                     type="email"
                     placeholder="Email"
                     onChange={getEmailValue}
                     value={email}
                 />
-
                 <InputForm
                     type="password"
                     placeholder="Password"
                     onChange={getPasswordValue}
                     value={password}
                 />
-
                 <button
                     type="submit"
-                    className="login-submit"
+                    className="registration-submit"
                     value="Register"
                 >
                     Register
                 </button>
+                <Link
+                    className="sign-in"
+                    to="/">
+                    Sign in
+                </Link>
             </form>
-
-            <div className="underlay-photo"></div>
-            <div className="underlay-black"></div>
+            <Background/>
         </div>
     );
 };

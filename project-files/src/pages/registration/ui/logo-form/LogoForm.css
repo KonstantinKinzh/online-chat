@@ -1,7 +1,14 @@
-.login-form {
-    background: transparent;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
-    margin: auto;
-    width: 20vw;
-    padding: 1vw;
+.login-text {
+    background: hsl(40, 30, 60);
+    color: white;
+    font-size: 1.5vw;
+    margin: 0 auto;
+    margin-bottom: 3vh;
+    padding: .5rem;
+    text-align: center;
+    text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.3);
+
+    .fa-stack-1x {
+        color: black;
+    }
 }

@@ -48,26 +48,15 @@ input {
     }
 }
 
-.login-text {
-    background: hsl(40, 30, 60);
-    color: white;
-    font-size: 1.5vw;
-    margin: 0 auto;
-    padding: .5rem;
-    text-align: center;
-    text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.3);
 
-    .fa-stack-1x {
-        color: black;
-    }
-}
 
-.login-submit {
+.registration-submit {
     border: 1px solid white;
     background: transparent;
     color: white;
     display: block;
-    margin: 1rem auto;
+    margin: 0 auto;
+    margin-bottom: 0.6vw;
     width: 6vw;
     height: 4vh;
     font-weight: 400;
@@ -82,21 +71,14 @@ input {
     }
 }
 
-[class*=underlay] {
-    left: 0;
-    min-height: 100%;
-    min-width: 100%;
-    position: fixed;
-    top: 0;
+.sign-in {
+    text-decoration: none;
+    color: white;
+    font-weight: 300;
+    font-size: 0.9vw;
 }
 
-.underlay-photo {
-    background: linear-gradient(330deg, rgba(0, 0, 0, 0.43) 0%, rgba(63, 61, 61, 1) 100%);
-    background-size: cover;
-    z-index: -1;
+.sign-in:hover {
+    text-decoration: underline;
 }
 
-.underlay-black {
-    background: rgba(28, 28, 28, 0.5);
-    z-index: -1;
-}
