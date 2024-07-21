@@ -1,13 +1,12 @@
-import { LogoForm } from "./ui/logo-form";
 import { InputForm } from "./ui/input-form";
-import "./Registration.css";
+import "./Login.css";
 
 
-export function Registration() {
+export function Login() {
     return (
-        <div className="registration">
-            <form className="registration-form">
-                <LogoForm />
+        <div className="login">
+            <form className="login-form">
+                <h2 className="header-form">Авторизация</h2>
 
                 <InputForm
                     type="email"
@@ -23,7 +22,7 @@ export function Registration() {
                     type="submit"
                     className="login-submit"
                     name="Login"
-                    value="Register"
+                    value="Sign in"
                 />
             </form>
             <div className="underlay-photo"></div>

@@ -1,21 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700);
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 
-.registration {
+.login {
     height: 100vh;
     font-family: 'Open Sans';
     display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
 }
 
-.registration-form {
+.login-form {
     background: transparent;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
     margin: auto;
     width: 20vw;
     padding: 1vw;
+}
+
+.header-form {
+    font-weight: 600;
+    font-size: 1.5vw;
+    color: white;
 }
 
 input {
