@@ -1,0 +1,9 @@
+.send-icon-svg path {
+    fill: #262c34;
+    cursor: pointer;
+    transition: fill .1s linear;
+}
+
+.send-icon-svg:hover path {
+    fill: #0099FF;
+}

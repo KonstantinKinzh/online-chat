@@ -1,0 +1,8 @@
+.window-chat {
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    overflow-y: auto;
+    background-color: #e9ecf2;
+}

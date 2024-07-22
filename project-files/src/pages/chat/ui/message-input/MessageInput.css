@@ -1,0 +1,14 @@
+.message-input {
+    background-color: #ffffff;
+}
+
+.message-input-inner {
+    display: flex;
+    align-items: center;
+    padding-left: 1vw;
+    padding-top: 1.5vh;
+    padding-right: 1vw;
+    padding-bottom: 1.5vh;
+
+    border-top: 2px solid #e5e5e5;
+}

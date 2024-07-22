@@ -1,0 +1,16 @@
+.data-chat {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-chat {
+    margin-bottom: 1vh;
+    font-weight: 600;
+    font-size: 0.9vw;
+}
+
+.quantity-users {
+    font-weight: 500;
+    font-size: 0.8vw;
+    color: #808080;
+}

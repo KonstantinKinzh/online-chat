@@ -1,0 +1,14 @@
+.header {
+    border-bottom: 2px solid #e5e5e5;
+    cursor: pointer;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}

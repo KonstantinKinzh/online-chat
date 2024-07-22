@@ -1,0 +1,48 @@
+.groups {
+    cursor: pointer;
+    transition: background-color .1s linear;
+}
+
+.groups:hover {
+    background-color: #333b44;
+}
+
+.groups-inner {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    column-gap: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.group-icon {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    object-position: 50%;
+}
+
+.group-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 4px;
+}
+
+.group-name {
+    width: 200px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.last-message {
+    font-weight: 500;
+    font-size: 13px;
+    color: #93979a;
+}

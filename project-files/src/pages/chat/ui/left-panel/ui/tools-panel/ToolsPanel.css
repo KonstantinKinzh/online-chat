@@ -1,0 +1,50 @@
+.tools-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+    padding-top: 15px;
+    margin-bottom: 10px;
+}
+
+.btn-settings {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: url("../../../../../../resources/icons/logo/burger.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    cursor: pointer;
+    transition: box-shadow .1s linear;
+}
+
+.btn-settings:active {
+    box-shadow: 0 0 14px rgba(211, 211, 211, 0.8);
+}
+
+.search {
+    height: 25px;
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+.search-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    padding-left: 1vw;
+    padding-top: 1.5vh;
+    padding-right: 1vw;
+    padding-bottom: 1.5vh;
+}
+
+.search-inner__input {
+    width: 100%;
+    height: 15px;
+    border: none;
+    outline: none;
+}
