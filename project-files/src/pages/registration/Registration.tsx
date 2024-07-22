@@ -1,4 +1,4 @@
-import { useGetDataForm } from "./hooks/useGetDataForm";
+import { useGetDataForm } from "../../shared/hooks/useGetDataForm";
 import { useRegistrationUser } from "./hooks/useRegistrationUser";
 import { LogoForm } from "./ui/logo-form";
 import { InputForm } from "./ui/input-form";
