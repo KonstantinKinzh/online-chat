@@ -72,6 +72,8 @@ input {
 }
 
 .sign-in {
+    position: relative;
+    left: 42%;
     text-decoration: none;
     color: white;
     font-weight: 300;

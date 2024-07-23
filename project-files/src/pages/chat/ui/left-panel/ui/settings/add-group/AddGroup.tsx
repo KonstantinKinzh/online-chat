@@ -1,13 +1,13 @@
 interface IAddGroupProps {
-    onHandleClick: React.MouseEventHandler<HTMLDivElement>
+    onHandleClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
 import "./AddGroup.css";
 
 export function AddGroup(props: IAddGroupProps) {
-    const { onHandleClick } = props;
+    // const { onHandleClick } = props;
     return (
-        <div onClick={onHandleClick} className="add-group">
+        <div id="addGroupId" className="add-group">
             <div className="add-group-inner">
                 <p className="name-sattings">Создать группу</p>
             </div>

@@ -1,0 +1,1 @@
+export { WinDataUser } from "./WinDataUser";

@@ -17,6 +17,7 @@
 }
 
 .header-form {
+    text-align: center;
     font-weight: 600;
     font-size: 1.5vw;
     color: white;
@@ -89,6 +90,8 @@ input {
 }
 
 .sign-up {
+    position: relative;
+    left: 42%;
     text-decoration: none;
     color: white;
     font-weight: 300;

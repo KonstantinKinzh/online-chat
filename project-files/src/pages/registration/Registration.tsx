@@ -1,5 +1,5 @@
 import { useGetDataForm } from "../../shared/hooks/useGetDataForm";
-import { useRegistrationUser } from "./hooks/useRegistrationUser";
+import { handleRegister } from "@/firebase/registrationUser";
 import { LogoForm } from "./ui/logo-form";
 import { InputForm } from "./ui/input-form";
 import { Background } from "./ui/background";
@@ -10,13 +10,12 @@ import "./Registration.css";
 export function Registration() {
     const navigate = useNavigate();
     const { email, password, getEmailValue, getPasswordValue } = useGetDataForm();
-    const { handleRegister } = useRegistrationUser(email, password);
 
     return (
         <div className="registration">
             <form
                 className="registration-form"
-                onSubmit={() => { handleRegister(), navigate("/chat") }}>
+                onSubmit={() => { handleRegister(email, password), navigate("/chat") }}>
                 <LogoForm />
                 <InputForm
                     type="email"
@@ -43,7 +42,7 @@ export function Registration() {
                     Sign in
                 </Link>
             </form>
-            <Background/>
+            <Background />
         </div>
     );
 };

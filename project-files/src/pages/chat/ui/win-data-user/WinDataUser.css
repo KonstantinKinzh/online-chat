@@ -1,0 +1,70 @@
+.win-data-user-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.win-data-user {
+    width: 300px;
+    background-color: #ffffff;
+}
+
+.win-data-user-inner {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.win-data-user-inner input[type="text"] {
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.title-form {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.btn-load-file {
+    display: block;
+    margin-bottom: 5px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    font-weight: 400;
+    font-size: 14px;
+    background-color: #E5E4E2;
+    background-image: url("../../../../../src/resources/icons/win-data-user/photo1.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 40px 40px;
+    cursor: pointer;
+}
+
+.input-data {
+    margin-bottom: 10px;
+    font-size: 15px;
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.input-data:last-child {
+    margin-bottom: 0px;
+}

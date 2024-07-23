@@ -1,0 +1,38 @@
+.settings-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color .1s linear;
+}
+
+.settings-user:hover {
+    background-color: #d4d4d4;
+}
+
+.settings-user-inner {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.name-sattings-user {
+    position: relative;
+    max-width: 250px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.name-sattings-user::after {
+    content: "";
+    position: absolute;
+    left: -35px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-image: url("../../../../../../../resources/icons/settings-menu/settings-user.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+}

@@ -1,19 +1,19 @@
 import { observer } from "mobx-react";
 import { SettingsMenu } from "../settings-menu";
-import { menuSettingsStore } from "@/store/menuSettingsStore";
+import { menuSettingsStore } from "../../../../store/menuSettingsStore";
 import "./ToolsPanel.css";
 
 
 
 export const ToolsPanel = observer(() => {
-    const toggleMenuSettings = menuSettingsStore.toogleMenuSettings;
+    const openMenuSettings = menuSettingsStore.openMenuSettings;
 
     return (
         <div className="tools-panel">
 
             <button
                 className="btn-settings"
-                onClick={toggleMenuSettings}
+                onClick={openMenuSettings}
             />
 
             <div className="search">
