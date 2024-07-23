@@ -3,9 +3,6 @@ import { makeAutoObservable } from "mobx";
 class MenuSettingsStore {
 
     isOpenMenuSettings = false;
-    isAtiveWinCreateGroup = false;
-    isActiveWinDataUser = false;
-
 
     constructor() {
         makeAutoObservable(this);
@@ -17,8 +14,7 @@ class MenuSettingsStore {
     };
 
     // Открыть меню настроект данных пользователя
-    openMenuDataUser = () => {
-        this.isActiveWinDataUser = !this.isActiveWinDataUser;
+    closeMenuSettings = () => {
         this.isOpenMenuSettings = false;
     };
 

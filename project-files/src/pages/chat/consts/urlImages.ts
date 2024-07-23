@@ -1,0 +1,1 @@
+export const urlInitialImg = `url('../../../../../src/resources/icons/win-data-user/photo2.png')`;

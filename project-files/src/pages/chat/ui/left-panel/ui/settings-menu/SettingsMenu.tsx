@@ -7,15 +7,13 @@ import { SettingsUser } from "../settings/settings-user";
 import "./SettingsMenu.css";
 
 export const SettingsMenu = observer(() => {
-
-    const isOpenMenuSettings = menuSettingsStore.isOpenMenuSettings;
-    const openMenuDataUser = menuSettingsStore.openMenuDataUser;
-
+    const { isOpenMenuSettings, closeMenuSettings } = menuSettingsStore;
+    const { toggleWinDataUser } = winDataUserStore;
 
     return (
         <Fragment>
             {isOpenMenuSettings &&
-                <div className="settings-menu-wrapper">
+                <div onClick={closeMenuSettings} className="settings-menu-wrapper">
                     <div onClick={(e) => e.stopPropagation()} className="settings-menu">
                         <div className="setting-menu-inner">
 
@@ -24,7 +22,7 @@ export const SettingsMenu = observer(() => {
                             />
 
                             <SettingsUser
-                                onHandleClick={openMenuDataUser}
+                                onHandleClick={toggleWinDataUser}
                             />
 
                         </div>

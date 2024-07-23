@@ -6,24 +6,31 @@ const auth = getAuth();
 const db = getDatabase();
 
 export const handleRegister = async (email: string, password: string) => {
-    let user = null;
+    let userData = null;
+
     try {
-        user = await createUserWithEmailAndPassword(auth, email, password);
+        const { user } = await createUserWithEmailAndPassword(auth, email, password);
+        userData = user;
     } catch (error) {
         console.error("Ошибка регистрации:", error);
     } finally {
-        writeUserData(user, email);
+        writeUserData(userData, email);
+
+        if(userData === null) {
+            return;
+        };
     };
 };
 
-const writeUserData = async (user: any, email: string) => {
-    const userRef = ref(db, "users/" + user.user.uid);
+const writeUserData = async (userData:any, email: string) => {
+    const userRef = ref(db, "users/" + userData.uid);
 
     await set(userRef, {
-        uid: user.user.uid,
+        uid: userData.uid,
         forename: "",
         surname: "",
         email: email,
         photo: ""
     });
 };
+

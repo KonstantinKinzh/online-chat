@@ -4,12 +4,12 @@ import { LeftPanel } from "./ui/left-panel";
 import { WindowChat } from "./ui/window-chat";
 import { MessageInput } from "./ui/message-input";
 import { WinDataUser } from "./ui/win-data-user";
-import { menuSettingsStore } from "./store/menuSettingsStore";
+import { winDataUserStore } from "./store/winDataUserStore";
 import "./Chat.css";
 
 
 export const Chat = observer(() => {
-    const isActiveWinDataUser = menuSettingsStore.isActiveWinDataUser;
+    const { isOpenWinDataUser } = winDataUserStore;
     return (
         <div className="chat">
             <Header />
@@ -17,7 +17,7 @@ export const Chat = observer(() => {
             <WindowChat />
             <MessageInput />
 
-            {isActiveWinDataUser && <WinDataUser />}
+            {isOpenWinDataUser && <WinDataUser />}
         </div>
     );
 });

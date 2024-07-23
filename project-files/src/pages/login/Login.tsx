@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useGetDataForm } from "@/shared/hooks/useGetDataForm";
-import { useLogin } from "./hooks/useLogin";
+import { login } from "@/firebase/login";
 import { InputForm } from "./ui/input-form";
 import { Background } from "./ui/background"
 import "./Login.css";
@@ -9,11 +9,16 @@ import "./Login.css";
 export function Login() {
     const navigate = useNavigate();
     const { email, password, getEmailValue, getPasswordValue } = useGetDataForm();
-    const { login } = useLogin(email, password);
-    
+
     return (
         <div className="login">
-            <form className="login-form" onSubmit={(e) => { e.preventDefault(), login(), navigate("/chat"); }}>
+            <form
+                className="login-form"
+                onSubmit={(e) => {
+                    e.preventDefault(),
+                        login(email, password),
+                        navigate("/chat");
+                }}>
                 <h2 className="header-form">Authorization</h2>
                 <InputForm
                     type="email"
