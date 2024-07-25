@@ -1,7 +1,9 @@
 import { Fragment } from "react";
 import { observer } from "mobx-react";
 import { menuSettingsStore } from "../../../../store/menuSettingsStore";
-import { winDataUserStore } from "@/pages/chat/store/winDataUserStore";
+import { winDataUserStore } from "@/store/winDataUserStore";
+import { winAddGroupStore } from "@/pages/chat/store/winAddGroupStore";
+import { UserPhoto } from "../user-photo";
 import { AddGroup } from "../settings/add-group";
 import { SettingsUser } from "../settings/settings-user";
 import "./SettingsMenu.css";
@@ -9,6 +11,7 @@ import "./SettingsMenu.css";
 export const SettingsMenu = observer(() => {
     const { isOpenMenuSettings, closeMenuSettings } = menuSettingsStore;
     const { toggleWinDataUser } = winDataUserStore;
+    const { toggleWinAddGroup } = winAddGroupStore;
 
     return (
         <Fragment>
@@ -17,8 +20,10 @@ export const SettingsMenu = observer(() => {
                     <div onClick={(e) => e.stopPropagation()} className="settings-menu">
                         <div className="setting-menu-inner">
 
+                            <UserPhoto />
+
                             <AddGroup
-                            // onHandleClick={toggleMenuSettings}
+                                onHandleClick={toggleWinAddGroup}
                             />
 
                             <SettingsUser

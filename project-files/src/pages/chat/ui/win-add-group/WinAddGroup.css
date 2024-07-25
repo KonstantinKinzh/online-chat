@@ -1,4 +1,4 @@
-.win-data-user-wrapper {
+.win-add-group-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,19 +11,12 @@
     z-index: 1;
 }
 
-.input-type-file {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    opacity: 0;
-}
-
-.win-data-user {
+.win-add-group {
     width: 300px;
     background-color: #ffffff;
 }
 
-.win-data-user-inner {
+.win-add-group-inner {
     padding-left: 10px;
     padding-top: 10px;
     padding-right: 10px;
@@ -34,7 +27,7 @@
     width: 100%;
 }
 
-.win-data-user-inner input[type="text"] {
+.win-add-group-inner input[type="text"] {
     padding-left: 10px;
     box-sizing: border-box;
 }
@@ -50,10 +43,10 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-image: url("../../../../../src/resources/images/photo.jpeg");
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
+    cursor: pointer;
 }
 
 .btn-load-file {
@@ -82,7 +75,7 @@
     margin-bottom: 20px;
 }
 
-.btn-save-data {
+.btn-create-group {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
@@ -98,7 +91,7 @@
         color .1s linear;
 }
 
-.btn-save-data:hover {
+.btn-create-group:hover {
     background-color: #262c34;
     color: #ffffff;
 }

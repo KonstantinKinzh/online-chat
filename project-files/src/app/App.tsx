@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { Router } from "@/router";
+import { getDataUserRealtimeDb } from "@/firebase/getDataUserRealtimeDb";
 import './App.css';
 
 export function App() {
+
+  // Получаем данные пользователя с сервера
+  useEffect(() => {
+    getDataUserRealtimeDb();
+  }, []);
 
   return (
     <Fragment>

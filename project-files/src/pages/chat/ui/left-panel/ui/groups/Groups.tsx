@@ -1,20 +1,31 @@
+import { observer } from "mobx-react";
+import { Fragment } from "react/jsx-runtime";
+import { userDataStore } from "@/store/userDataStore";
+import {v4 as uuid} from "uuid"
 import IconGr1 from "@/resources/images/icon-gr1.png";
 import "./Groups.css";
 
-export function Groups() {
+export const Groups = observer(() => {
+
+    const { groups } = userDataStore;
+    console.log(groups);
     return (
-        <div className="groups">
-            <div className="groups-inner">
-                <img
-                    className="group-icon"
-                    src={IconGr1}
-                    alt="Icon group"
-                />
-                <div className="group-data">
-                    <p className="group-name">Frontend Developers</p>
-                    <p className="last-message">Привет</p>
+        <Fragment>
+            {groups.map((group) => (
+                <div key={uuid()} className="groups">
+                    <div className="groups-inner">
+                        <img
+                            className="group-icon"
+                            src={group.IconGr1}
+                            alt="Icon group"
+                        />
+                        <div className="group-data">
+                            <p className="group-name">{group.nameGroup}</p>
+                            <p className="last-message">Привет</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            ))}
+        </Fragment>
     );
-};
+});

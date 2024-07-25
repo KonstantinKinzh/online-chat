@@ -1,4 +1,4 @@
-import { winDataUserStore } from "../store/winDataUserStore";
+import { winDataUserStore } from "@/store/winDataUserStore";
 const { toggleWinDataUser } = winDataUserStore;
 
 export const useClickEsc = () => {

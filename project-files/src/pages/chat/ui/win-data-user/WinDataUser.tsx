@@ -1,16 +1,14 @@
 import { observer } from "mobx-react";
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { urlInitialImg } from "../../consts/urlImages";
 import { updateDataUser } from "@/firebase/updateDataUser";
 import { useClickEsc } from "../../hooks/useClickEsc";
 import { userDataStore } from "@/store/userDataStore";
 import { useGetDataUserInput } from "../../hooks/useGetDataUserInput";
-import { winDataUserStore } from "../../store/winDataUserStore";
+import { winDataUserStore } from "@/store/winDataUserStore";
 import "./WinDataUser.css";
 
 export const WinDataUser = observer(() => {
-
-    const photoUser = useRef(null);
     const { photo } = userDataStore;
     const { clickEsc } = useClickEsc();
     const { toggleWinDataUser } = winDataUserStore;
@@ -18,10 +16,11 @@ export const WinDataUser = observer(() => {
     const {
         forename,
         surname,
-        getPhotoUser,
+        file,
+        getFileFromInput,
         getForenameUser,
         getSurnameUser
-    } = useGetDataUserInput(photoUser);
+    } = useGetDataUserInput();
 
     useEffect(() => {
         window.addEventListener("keydown", clickEsc);
@@ -40,16 +39,12 @@ export const WinDataUser = observer(() => {
                     <div
                         className="btn-load-file-wrapp"
                         style={{ backgroundImage: photo === "" ? urlInitialImg : `url(${photo})` }}>
+
                         <input
-                            ref={photoUser}
                             id="inpTF"
                             type="file"
-                            onChange={getPhotoUser}
-                            style={{ display: "none" }}
-                        />
-                        <label
-                            htmlFor="inpTF"
-                            className="btn-load-file"
+                            onChange={getFileFromInput}
+                            className="input-type-file"
                         />
                     </div>
 
@@ -69,11 +64,13 @@ export const WinDataUser = observer(() => {
                     />
 
                     <button
-                        onClick={() => { updateDataUser(forename, surname, photo); toggleWinDataUser() }}
+                        onClick={() => {
+                            updateDataUser(forename, surname, file);
+                            toggleWinDataUser();
+                        }}
                         className="btn-save-data">
                         Сохранить
                     </button>
-
                 </div>
             </div>
         </div>

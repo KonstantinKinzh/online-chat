@@ -16,7 +16,7 @@ export function Login() {
                 className="login-form"
                 onSubmit={(e) => {
                     e.preventDefault(),
-                        login(email, password),
+                        login({email, password}),
                         navigate("/chat");
                 }}>
                 <h2 className="header-form">Authorization</h2>
