@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { observer } from "mobx-react";
 import { addGroup } from "@/firebase/addGroup";
-import { urlInitialImg } from "../../consts/urlImages";
+import { startImg } from "../../consts/urlImages";
 import { useCreateGroupInputs } from "../../hooks/useCreateGroupInputs";
 import "./WinAddGroup.css";
 
@@ -21,7 +21,7 @@ export const WinAddGroup = observer(() => {
 
                     <h2 className="title-form">Создать группу</h2>
 
-                    <div style={{ backgroundImage: urlInitialImg }} className="btn-load-file-wrapp">
+                    <div style={{ backgroundImage: startImg }} className="btn-load-file-wrapp">
                         <input
                             ref={imgGroup}
                             id="inpTF"

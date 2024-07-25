@@ -2,13 +2,13 @@ import { set, ref, get, update, push } from "firebase/database";
 import { db } from "./firebase";
 import { userDataStore } from "@/store/userDataStore";
 
-const { uid } = userDataStore;
+const { uidStore } = userDataStore;
 
 
 export const addGroup = async (nameGroup: string, imgSrc: string | undefined) => {
-    const userRef = ref(db, "users/" + uid);
+    const userRef = ref(db, "users/" + uidStore);
 
-    const snapshot = await get(ref(db, `/users/${uid}`));
+    const snapshot = await get(ref(db, `/users/${uidStore}`));
     const existingData = snapshot.val() || {};
 
     console.log(nameGroup);
@@ -29,7 +29,7 @@ export const addGroup = async (nameGroup: string, imgSrc: string | undefined) =>
 };
 
 export const updateDataUser = async (nameGroup: string, imgSrc: string | undefined) => {
-    const groupRef = ref(db, `/groups/${uid}`);
+    const groupRef = ref(db, `/groups/${uidStore}`);
 
     const groupData = {
         nameGroup: nameGroup,

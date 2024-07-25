@@ -2,6 +2,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import { userDataStore } from "@/store/userDataStore";
 import { winDataUserStore } from "@/store/winDataUserStore";
+import { getDataUserRealtimeDb } from "./getDataUserRealtimeDb";
 import "./firebase";
 
 const auth = getAuth();
@@ -36,5 +37,6 @@ const writeUserData = async (userData: any, email: string) => {
 
     toggleWinDataUser();
     setNumVisitsUser(1);
+    getDataUserRealtimeDb();
 };
 

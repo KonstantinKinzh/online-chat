@@ -7,11 +7,11 @@ import "./Groups.css";
 
 export const Groups = observer(() => {
 
-    const { groups } = userDataStore;
-    console.log(groups);
+    const { groupsStore } = userDataStore;
+    console.log(groupsStore);
     return (
         <Fragment>
-            {groups.map((group) => (
+            {groupsStore.map((group) => (
                 <div key={uuid()} className="groups">
                     <div className="groups-inner">
                         <img

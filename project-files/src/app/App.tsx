@@ -5,8 +5,6 @@ import { getDataUserRealtimeDb } from "@/firebase/getDataUserRealtimeDb";
 import './App.css';
 
 export function App() {
-
-  // Получаем данные пользователя с сервера
   useEffect(() => {
     getDataUserRealtimeDb();
   }, []);

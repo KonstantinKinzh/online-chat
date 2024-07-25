@@ -4,6 +4,7 @@ import { ref, get, update } from "firebase/database";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { userDataStore } from "@/store/userDataStore";
 import { winDataUserStore } from "@/store/winDataUserStore";
+import { getDataUserRealtimeDb } from "./getDataUserRealtimeDb";
 
 interface IArgLogin {
     email?: string,
@@ -36,6 +37,7 @@ const getNumVisitsUser = async (uid: string | undefined) => {
         let { email, forename, numVisits, photo, surname, } = existingData;
         numVisits += 1;
         console.log(numVisits);
+
         setNumVisitsUser(numVisits);
         if (numVisits === 1) {
             toggleWinDataUser();
@@ -55,5 +57,7 @@ const getNumVisitsUser = async (uid: string | undefined) => {
         };
     } catch (error) {
         console.error(error);
-    }
+    } finally {
+        getDataUserRealtimeDb();
+    };
 };

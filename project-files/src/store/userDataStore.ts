@@ -1,46 +1,49 @@
 import { makeAutoObservable } from "mobx";
 
 class UserDataStore {
-    uid = "";
-    numVisitsUser = 0;
-    photo: string | undefined = "";
-    forename = "";
-    surname = "";
-    groups: any = [];
+    emailStore = "";
+    forenameStore = "";
+    numVisitsStore = 0;
+    photoStore: string | undefined = "";
+    surnameStore = "";
+    uidStore = "";
+    groupsStore: any = [];
+    
 
     constructor() {
         makeAutoObservable(this);
     };
 
     setUID = (uid: any) => {
-        this.uid = uid;
-        console.log(this.uid);
+        this.uidStore = uid;
     };
 
     setNumVisitsUser = (numVisits:number) => {
-        this.numVisitsUser = numVisits;
-        console.log(this.numVisitsUser);
+        this.numVisitsStore = numVisits;
     };
 
     setPhotoUser = (photo: string | undefined) => {
-        this.photo = photo;
-        // console.log(this.photo);
+        this.photoStore = photo;
     };
 
     setForenameSurnameUser = (forename: string, surname: string) => {
-        this.forename = forename;
-        this.surname = surname;
+        this.forenameStore = forename;
+        this.surnameStore = surname;
     };
 
     setDataUserFromDB = (userData: any) => {
-        this.photo = userData.photo;
-        this.forename = userData.forename;
-        this.surname = userData.surname;
+        console.log(this.forenameStore, this.photoStore, this.photoStore);
+        this.emailStore = userData.email;
+        this.forenameStore = userData.forename;
+        this.numVisitsStore = userData.numVisits;
+        this.photoStore = userData.photo;
+        this.surnameStore = userData.surname;
+        this.uidStore = userData.uid;
 
         if (Array.isArray(userData.groups)) {
-            this.groups = [...this.groups, ...userData.groups];
+            this.groupsStore = [...this.groupsStore, ...userData.groups];
         } else {
-            this.groups = userData.groups ? [userData.groups] : [];
+            this.groupsStore = userData.groups ? [userData.groups] : [];
         };
     };
 

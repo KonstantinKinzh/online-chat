@@ -1,21 +1,33 @@
-import { userDataStore } from "@/store/userDataStore";
-import { ref, onValue } from "firebase/database";
 import { db } from "./firebase";
+import { get, ref } from "firebase/database";
+import { userDataStore } from "@/store/userDataStore";
 
-const { uid, setDataUserFromDB } = userDataStore;
 
-export const getDataUserRealtimeDb =  () => {
-    const userRef = ref(db, 'users/' + uid);
+export const getDataUserRealtimeDb = async () => {
+    const { uidStore, setDataUserFromDB } = userDataStore;
+    const snapshot = await get(ref(db, `/users/${uidStore}`));
+    const existingData = snapshot.val() || {};
 
-    // Подписываемся на изменения в данных пользователя
-    onValue(userRef, async (snapshot) => {
-        const userData = await snapshot.val();
-        console.log(userData);
-        if(userData === null) {
-            console.log("На сервере отсутствуют данные!");
-            return;
-        };
+    
 
-        setDataUserFromDB(userData);
-    });
+    let dataDB = null;
+    for (let key in existingData) {
+        console.log(existingData);
+        dataDB = existingData[key];
+    };
+
+    const { email, forename, numVisits, photo, surname } = dataDB;
+    console.log(dataDB);
+
+
+    const userData = {
+        email: email,
+        forename: forename,
+        numVisits: numVisits,
+        photo: photo,
+        surname: surname,
+        uid: uidStore,
+    };
+
+    setDataUserFromDB(userData);
 };

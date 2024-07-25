@@ -14,7 +14,7 @@ import "./Chat.css";
 
 
 export const Chat = observer(() => {
-    const { numVisitsUser } = userDataStore;
+    const { numVisits } = userDataStore;
     const { isOpenWinDataUser } = winDataUserStore;
     const { isOpenWinAddGroup } = winAddGroupStore;
 
@@ -27,7 +27,7 @@ export const Chat = observer(() => {
 
             {isOpenWinAddGroup && <WinAddGroup />}
             {isOpenWinDataUser && <WinDataUser />}
-            {numVisitsUser === 1 && isOpenWinDataUser && <WinDataUser />}
+            {numVisits === 1 && isOpenWinDataUser && <WinDataUser />}
         </div>
     );
 });
