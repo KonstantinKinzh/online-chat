@@ -1,6 +1,6 @@
 interface IAddGroupProps {
-    onHandleClick?: React.MouseEventHandler<HTMLDivElement>
-}
+    onHandleClick: React.MouseEventHandler<HTMLDivElement>
+};
 
 import "./AddGroup.css";
 

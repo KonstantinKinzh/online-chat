@@ -1,35 +1,35 @@
-.settings-user {
+.exit {
     margin-top: 5px;
     width: 100%;
     cursor: pointer;
     transition: background-color .1s linear;
 }
 
-.settings-user:hover {
+.exit:hover {
     background-color: #d4d4d4;
 }
 
-.settings-user-inner {
+.exit-inner {
     padding-left: 40px;
     padding-top: 15px;
     padding-bottom: 15px;
 }
 
-.name-sattings-user {
+.name-exit {
     position: relative;
     max-width: 250px;
     font-weight: 500;
     font-size: 14px;
 }
 
-.name-sattings-user::after {
+.name-exit::after {
     content: "";
     position: absolute;
     left: -35px;
     top: 0;
     width: 16px;
     height: 16px;
-    background-image: url("../../../../../../../resources/icons/settings-menu/settings-user.png");
+    background-image: url("../../../../../../../resources/icons/settings-menu/exit.png");
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: contain;

@@ -1,7 +1,4 @@
 .add-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 5px;
     width: 100%;
     cursor: pointer;
@@ -13,6 +10,7 @@
 }
 
 .add-group-inner {
+    padding-left: 40px;
     padding-top: 15px;
     padding-bottom: 15px;
 }

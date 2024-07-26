@@ -1,17 +1,26 @@
+import { db } from "./firebase";
+import { ref, set, get } from "firebase/database";
 import { userDataStore } from "@/store/userDataStore";
 import { getDataUserRealtimeDb } from "@/firebase/getDataUserRealtimeDb";
-import { getDatabase, ref, set, get } from "firebase/database";
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 
-const db = getDatabase();
-const storage = getStorage();
-
 export const updateDataUser = async (forename: string, surname: string, file: File | null) => {
-    const { uidStore } = userDataStore;
-    const snapshot = await get(ref(db, `/users/${uidStore}`));
-    const existingData = snapshot.val() || {};
+    const storage = getStorage();
+    const { setPhotAndNameUser } = userDataStore;
+
+    const activeUserLS = localStorage.getItem("activeUser");
+    if (activeUserLS === null) {
+        alert("Данных в хранилище нет. Значение activeUser = undefined");
+        return;
+    };
+    const activeUser = JSON.parse(activeUserLS);
+    const uidActiveUser = activeUser.uid;
 
     try {
+        const snapshot = await get(ref(db, `/users/${uidActiveUser}`));
+        const existingData = snapshot.val() || {};
+
+        console.log(existingData);
 
         let photoUrl = null;
 
@@ -21,16 +30,10 @@ export const updateDataUser = async (forename: string, surname: string, file: Fi
             photoUrl = await getDownloadURL(storageReference);
         };
 
-        let dataDB = null;
-        for (let key in existingData) {
-            console.log(existingData);
-            dataDB = existingData[key];
-        };
-
-        const userRef = ref(db, "users/" + dataDB.uid);
+        const userRef = ref(db, "users/" + uidActiveUser);
 
         if (file !== null) {
-            const { email, numVisits, uid } = dataDB;
+            const { email, numVisits, uid, isAuthorized } = existingData;
             await set(userRef, {
                 email: email,
                 forename: forename,
@@ -38,9 +41,35 @@ export const updateDataUser = async (forename: string, surname: string, file: Fi
                 photo: photoUrl,
                 surname: surname,
                 uid: uid,
+                isAuthorized: isAuthorized,
             });
+
+            localStorage.setItem("activeUser", JSON.stringify({
+                email: email,
+                forename: forename,
+                isAuthorized: isAuthorized,
+                numVisits: numVisits,
+                photo: photoUrl,
+                surname: surname,
+                uid: uid,
+            }));
+
         } else {
-            const { email, numVisits, photo, uid } = dataDB;
+            const { email, numVisits, photo, uid, isAuthorized } = existingData;
+            setPhotAndNameUser(photo, forename);
+            
+            localStorage.setItem("activeUser", JSON.stringify({
+                email: email,
+                forename: forename,
+                isAuthorized: isAuthorized,
+                numVisits: numVisits,
+                photo: photo,
+                surname: surname,
+                uid: uid,
+            }));
+
+            
+
             await set(userRef, {
                 email: email,
                 forename: forename,
@@ -48,7 +77,9 @@ export const updateDataUser = async (forename: string, surname: string, file: Fi
                 photo: photo,
                 surname: surname,
                 uid: uid,
+                isAuthorized: isAuthorized,
             });
+            
         };
     } catch (error) {
         console.error(error);

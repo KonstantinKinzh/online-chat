@@ -6,19 +6,26 @@ class UserDataStore {
     numVisitsStore = 0;
     photoStore: string | undefined = "";
     surnameStore = "";
-    uidStore = "";
+    uidStore: string | null = "";
+    isAuthClient = false;
+    isAuthServer = false;
     groupsStore: any = [];
-    
+
 
     constructor() {
         makeAutoObservable(this);
     };
 
-    setUID = (uid: any) => {
-        this.uidStore = uid;
+    setPhotAndNameUser = (photo:string, name:string) => {
+        this.photoStore = photo;
+        this.forenameStore = name;
     };
 
-    setNumVisitsUser = (numVisits:number) => {
+    setAuthClient = () => {
+        this.isAuthClient = true;
+    };
+
+    setNumVisitsUser = (numVisits: number) => {
         this.numVisitsStore = numVisits;
     };
 
@@ -31,14 +38,14 @@ class UserDataStore {
         this.surnameStore = surname;
     };
 
-    setDataUserFromDB = (userData: any) => {
-        console.log(this.forenameStore, this.photoStore, this.photoStore);
+    setDataUserFromDB = async (userData: any) => {
+
         this.emailStore = userData.email;
         this.forenameStore = userData.forename;
         this.numVisitsStore = userData.numVisits;
         this.photoStore = userData.photo;
         this.surnameStore = userData.surname;
-        this.uidStore = userData.uid;
+        this.isAuthServer = userData.surname;
 
         if (Array.isArray(userData.groups)) {
             this.groupsStore = [...this.groupsStore, ...userData.groups];

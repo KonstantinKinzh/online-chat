@@ -1,13 +1,21 @@
 .user-photo-wrapper {
     padding-top: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .user-photo {
+    margin-bottom: 5px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    cursor: pointer;
+    object-fit: cover;
+    object-position: 50%;
+}
+
+.user-photo__name {
+    font-weight: 500;
+    font-size: 14px;
 }

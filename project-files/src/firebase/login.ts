@@ -12,7 +12,6 @@ interface IArgLogin {
 };
 
 export const login = async ({ email, password }: IArgLogin) => {
-    const { setUID } = userDataStore;
     let userData = null;
     try {
         if (email === undefined || password === undefined) {
@@ -20,28 +19,43 @@ export const login = async ({ email, password }: IArgLogin) => {
         };
         const { user } = await signInWithEmailAndPassword(auth, email, password);
         userData = user;
+        console.log(user.uid);
     } catch (error) {
         console.error(error);
     } finally {
-        setUID(userData?.uid);
         getNumVisitsUser(userData?.uid);
     };
 };
 
-const getNumVisitsUser = async (uid: string | undefined) => {
+const getNumVisitsUser = async (uidClient: string | undefined) => {
     const { setNumVisitsUser } = userDataStore;
     const { toggleWinDataUser } = winDataUserStore;
     try {
-        const snapshot = await get(ref(db, `/users/${uid}`));
+        const snapshot = await get(ref(db, `/users/${uidClient}`));
         const existingData = snapshot.val() || {};
-        let { email, forename, numVisits, photo, surname, } = existingData;
+        let { email, forename, isAuthorized, numVisits, photo, surname, uid } = existingData;
         numVisits += 1;
-        console.log(numVisits);
 
         setNumVisitsUser(numVisits);
         if (numVisits === 1) {
             toggleWinDataUser();
         };
+
+        if (uid === undefined) {
+            alert("При Авторизации полученный UID равен 'undefined' ")
+            return;
+        };
+
+        localStorage.setItem("activeUser", JSON.stringify({
+            email: email,
+            forename: forename,
+            isAuthorized: isAuthorized,
+            numVisits: numVisits,
+            photo: photo,
+            surname: surname,
+            uid: uid
+        }));
+
         if (numVisits > 1) {
             const userData = {
                 email: email,
@@ -50,6 +64,7 @@ const getNumVisitsUser = async (uid: string | undefined) => {
                 photo: photo,
                 surname: surname,
                 uid: uid,
+                isAuthorized: true,
             };
             const updates: { [key: string]: typeof userData } = {};
             updates['/users/' + uid] = userData;

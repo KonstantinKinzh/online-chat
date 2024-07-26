@@ -8,7 +8,6 @@ import "./Groups.css";
 export const Groups = observer(() => {
 
     const { groupsStore } = userDataStore;
-    console.log(groupsStore);
     return (
         <Fragment>
             {groupsStore.map((group) => (

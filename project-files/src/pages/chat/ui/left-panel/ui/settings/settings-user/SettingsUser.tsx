@@ -1,7 +1,8 @@
 import { observer } from "mobx-react";
 
 interface ISettingsUserProps {
-    onHandleClick?: React.MouseEventHandler<HTMLDivElement>
+    onHandleClick
+    : React.MouseEventHandler<HTMLDivElement>
 };
 
 import "./SettingsUser.css";

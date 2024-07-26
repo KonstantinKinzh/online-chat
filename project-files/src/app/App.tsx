@@ -1,12 +1,14 @@
+import { observer } from "mobx-react";
 import { useEffect } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { Router } from "@/router";
-import { getDataUserRealtimeDb } from "@/firebase/getDataUserRealtimeDb";
+import { getAuthData } from "./lib/getAuthData";
 import './App.css';
 
-export function App() {
+export const App = observer(() => {
+
   useEffect(() => {
-    getDataUserRealtimeDb();
+    getAuthData();
   }, []);
 
   return (
@@ -14,4 +16,4 @@ export function App() {
       <Router />
     </Fragment>
   );
-};
+});

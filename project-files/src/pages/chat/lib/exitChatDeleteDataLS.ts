@@ -1,11 +1,9 @@
-import { get, ref, getDatabase } from "firebase/database";
-import { userDataStore } from "@/store/userDataStore";
+import { set, get, ref, getDatabase } from "firebase/database";
 
-export const getDataUserRealtimeDb = async () => {
-    const db = getDatabase();
-    const { setDataUserFromDB } = userDataStore;
-
+export const exitChatDeleteDataLS = async () => {
     try {
+        const db = getDatabase();
+
         const activeUser = localStorage.getItem("activeUser");
         if (activeUser === null) {
             alert("Данных в хранилище нет. Значение activeUser = undefined");
@@ -13,6 +11,7 @@ export const getDataUserRealtimeDb = async () => {
         };
         const uidActiveUser = JSON.parse(activeUser).uid;
 
+        const userRef = ref(db, "users/" + uidActiveUser);
         const snapshot = await get(ref(db, `/users/${uidActiveUser}`));
         const existingData = snapshot.val() || {};
         const {
@@ -21,21 +20,20 @@ export const getDataUserRealtimeDb = async () => {
             numVisits,
             photo,
             surname,
-            uid,
-            isAuthorized
+            uid
         } = existingData;
 
-        const userData = {
+        await set(userRef, {
             email: email,
             forename: forename,
+            isAuthorized: false,
             numVisits: numVisits,
             photo: photo,
             surname: surname,
             uid: uid,
-            isAuthorized: isAuthorized,
-        };
+        });
 
-        await setDataUserFromDB(userData);
+        localStorage.removeItem("activeUser");
     } catch (error) {
         console.error(error);
     };
